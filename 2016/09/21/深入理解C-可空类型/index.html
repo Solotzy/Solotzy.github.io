@@ -84,15 +84,28 @@
 
 
 
-<meta name="description" content="F1">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kevin">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="可空类型的核心部分是System.Nullable&amp;lt;T&amp;gt;.  
+静态类System.Nullable提供了一些工具方法，可以简化可空类型的使用.
+
+首先看一看C#框架中Nullabl&amp;lt;T&amp;gt;的定义:1public struct Nullable&amp;lt;T&amp;gt; where T : struct
+很明显，Nullabl&amp;lt;T&amp;gt;是一个泛型类型，泛型参数T有一个值类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解C#---可空类型">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/深入理解C-可空类型/index.html">
 <meta property="og:site_name" content="Kevin">
-<meta property="og:description" content="F1">
+<meta property="og:description" content="可空类型的核心部分是System.Nullable&amp;lt;T&amp;gt;.  
+静态类System.Nullable提供了一些工具方法，可以简化可空类型的使用.
+
+首先看一看C#框架中Nullabl&amp;lt;T&amp;gt;的定义:1public struct Nullable&amp;lt;T&amp;gt; where T : struct
+很明显，Nullabl&amp;lt;T&amp;gt;是一个泛型类型，泛型参数T有一个值类型">
+<meta property="og:updated_time" content="2016-09-21T07:11:49.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kevin">
-<meta name="twitter:description" content="F1">
+<meta name="twitter:title" content="深入理解C#---可空类型">
+<meta name="twitter:description" content="可空类型的核心部分是System.Nullable&amp;lt;T&amp;gt;.  
+静态类System.Nullable提供了一些工具方法，可以简化可空类型的使用.
+
+首先看一看C#框架中Nullabl&amp;lt;T&amp;gt;的定义:1public struct Nullable&amp;lt;T&amp;gt; where T : struct
+很明显，Nullabl&amp;lt;T&amp;gt;是一个泛型类型，泛型参数T有一个值类型">
 
 
 
@@ -110,7 +123,7 @@
   };
 </script>
 
-  <title> Kevin </title>
+  <title> 深入理解C#---可空类型 | Kevin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,9 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,9 +221,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -232,10 +243,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/21/深入理解C-可空类型/" itemprop="url">
-                  深入理解C#---可空类型
-                </a>
+                深入理解C#---可空类型
               
             
           </h1>
@@ -275,9 +283,7 @@
       
 
       
-        
-          
-            <ul>
+        <ul>
 <li>可空类型的核心部分是<code>System.Nullable&lt;T&gt;</code>.  </li>
 <li>静态类System.Nullable提供了一些工具方法，可以简化可空类型的使用.</li>
 </ul>
@@ -294,16 +300,19 @@
 <p>首先是T到<code>Nullabl&lt;T&gt;</code>隐式转换。转换结果为一个HasValue属性为true的实例,同样，<code>Nullabl&lt;T&gt;</code>可以显示转换为T，其作用域Value属性相同，在没有真正的值可供返回时将抛出一个异常.</p>
 <p>参考《C# in depth》<br>完整源码<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">[Serializable]</div><div class="line">[System.Runtime.Versioning.NonVersionable] <span class="comment">// This only applies to field layout</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Nullable&lt;T&gt; <span class="keyword">where</span> T : <span class="keyword">struct</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">bool</span> hasValue;</div><div class="line">    <span class="keyword">internal</span> T <span class="keyword">value</span>;</div><div class="line"></div><div class="line">    [System.Runtime.Versioning.NonVersionable]</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Nullable</span>(<span class="params">T <span class="keyword">value</span></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.<span class="keyword">value</span> = <span class="keyword">value</span>;</div><div class="line">        <span class="keyword">this</span>.hasValue = <span class="literal">true</span>;</div><div class="line">    &#125;        </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> HasValue &#123;</div><div class="line">        [System.Runtime.Versioning.NonVersionable]</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="keyword">return</span> hasValue;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> T Value &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="keyword">if</span> (!hasValue) &#123;</div><div class="line">                ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_NoValue);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">value</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [System.Runtime.Versioning.NonVersionable]</div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">GetValueOrDefault</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">value</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [System.Runtime.Versioning.NonVersionable]</div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">GetValueOrDefault</span>(<span class="params">T defaultValue</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> hasValue ? <span class="keyword">value</span> : defaultValue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">bool</span> <span class="title">Equals</span>(<span class="params"><span class="keyword">object</span> other</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!hasValue) <span class="keyword">return</span> other == <span class="literal">null</span>;</div><div class="line">        <span class="keyword">if</span> (other == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">value</span>.Equals(other);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">int</span> <span class="title">GetHashCode</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> hasValue ? <span class="keyword">value</span>.GetHashCode() : <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">ToString</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> hasValue ? <span class="keyword">value</span>.ToString() : <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [System.Runtime.Versioning.NonVersionable]</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> Nullable&lt;T&gt;(T <span class="keyword">value</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Nullable&lt;T&gt;(<span class="keyword">value</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [System.Runtime.Versioning.NonVersionable]</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">T</span>(<span class="params">Nullable&lt;T&gt; <span class="keyword">value</span></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">value</span>.Value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -311,465 +320,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/13/做点C-之外的东西/" rel="next" title="做点C#之外的东西">
+                <i class="fa fa-chevron-left"></i> 做点C#之外的东西
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/09/13/做点C-之外的东西/" itemprop="url">
-                  做点C#之外的东西
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T10:46:17+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><a href="http://tianzeyu.top/E-business/" target="_blank" rel="external">慕课网电商网站布局</a><br><a href="http://tianzeyu.top/Smooth-transition/" target="_blank" rel="external">CSS3实现页面的平滑过渡</a><br><a href="http://tianzeyu.top/Gorgeous-clock-effect/" target="_blank" rel="external">绚丽的时钟效果</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/23/MongoDB-查询/" itemprop="url">
-                  MongoDB 查询
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T17:52:10+08:00" content="2016-08-23">
-              2016-08-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.cnblogs.com/egger/archive/2013/06/14/3135847.html" target="_blank" rel="external">http://www.cnblogs.com/egger/archive/2013/06/14/3135847.html</a></p>
-<p>#查询操作</p>
-<ol>
-<li>集合查询方法 find()</li>
-<li>查询内嵌文档</li>
-<li>查询操作符(内含 数组查询)<br>“$gt” 、”$gte”、 “$lt”、 “$lte”、”null查询”、”$all”、”$size”、”$in”、”$nin”、<br>“$and”、”$nor”、”$not”、”$or”、”$exists”、”$mod”、”$regex”、”$where”、”$slice”、”$elemMatch”</li>
-</ol>
-<p>####1.1集合查询方法find()<br>一个条件  </p>
-<blockquote>
-<p>  db.user.find({age:16})</p>
-</blockquote>
-<p>多个条件，逗号分隔</p>
-<blockquote>
-<p>  db.user.find({age:28,sex:”male”})</p>
-</blockquote>
-<p>指定返回的键<br>通过find 的第二个参数来指定返回的键<br>若find不指定第二个参数，查询操作默认返回查询文档中所有键值<br>集合user包含 _id,name,age,sex，email等键,如果查询结果想只显示集合中的”name”和”age”键，可以使用如下查询返回这些键</p>
-<blockquote>
-<p>  db.users.find({}, {“name” ： 1, “age” ： 1})</p>
-</blockquote>
-<p>_id”这个键总是被返回，即便是没有指定也一样。但是我们可以显示的将其从查询结果中移除掉</p>
-<blockquote>
-<p>  db.users.find({}, {“name” ： 1, “age” ： 1, “_id”：0})</p>
-</blockquote>
-<p>在第二个参数中，指定键名且值为1或者true则是查询结果中显示的键；若值为0或者false，则为不显示键</p>
-<p>####1.3查询操作符<br>下面我们将配合查询操作符来执行复杂的查询操作，比如元素查询、 逻辑查询 、比较查询操作<br>使用下面的比较操作符”$gt” 、”$gte”、 “$lt”、 “$lte”(分别对应”&gt;”、 “&gt;=” 、”&lt;” 、”&lt;=”)，组合起来进行范围的查找<br>查询年龄为16-18岁(包含16但不含18)的用户：  </p>
-<blockquote>
-<p>  db.user.find( { age: { $gte: 16 ,$lt:18} }</p>
-</blockquote>
-<p>我们可以使用”$ne”来进行”不相等”操作。例如查询年龄不为18岁的用户：  </p>
-<blockquote>
-<p>  db.user.find( { age: {$ne:18} }</p>
-</blockquote>
-<p>精确匹配日期要精确到毫秒,然而我们通常只是想得到关于一天、一周或者是一个月的数据，我们可以使用”gt”、”gt”、”lt”进行范围査询<br>例如，要査找在1990年1月1日出生的用户：</p>
-<blockquote>
-<p>   start = new Date(“1990/01/01”)<br>   db.users.find({“birthday” ： {“$lt” ： start}})</p>
-</blockquote>
-<p>####键值为null查询操作<br>$in”判断键值是否为null,”$exists”判定集合中文档是否包含该键  </p>
-<blockquote>
-<p>  //集合中有一条sex键值为null的文档<br>  {“name”:”xiaoming”,”age”:20,”sex”:”male”}<br>  {“name”:”xiaohong”,”age”:22,”sex”:”female”}<br>  {“name”:”lilei”,”age”:24,”sex”:null}  </p>
-<p>  //返回文档中存在sex键，且值为null的文档<br>  db.users.find({sex:{$in:[null],$exists:true }})  </p>
-<p>  //返回文档中存在birthday键，且值为null的文档<br>  //文档没有birthday键，所以结果为空<br>  db.users.find({birthday:{$in:[null],$exists:true }})  </p>
-</blockquote>
-<p>我们也可以运行如下语句：  </p>
-<blockquote>
-<p>  db.users.find({sex:null})  </p>
-</blockquote>
-<p>我们最好使用db.users.find({sex:{in:[null],in:[null],exists:true }})这种格式。  </p>
-<p>####”$all”<br>匹配那些指定键的键值中包含数组，而且该数组包含条件指定数组的所有元素的文档,数组中元素顺序不影响查询结果  </p>
-<blockquote>
-<p>  语法: { field: { $all: [ <value> , <value1> … ] }  </value1></value></p>
-</blockquote>
-<p>查询出在集合inventory中 tags键值包含数组，且该数组中包含appliances、school、 book元素的所有文档:  </p>
-<blockquote>
-<p>  db.inventory.find( { tags: { $all: [ “appliances”, “school”, “book” ] } }   </p>
-</blockquote>
-<p>文档中键值类型不是数组，也可以使用$all操作符进行查询操作，如下例所示”$all”对应的数组只有一个值，那么和直接匹配这个值效果是一样的  </p>
-<blockquote>
-<p>  //查询结果是相同的，匹配amount键值等于50的文档<br>  db.inventory.find( { amount: {$all:[50]}} )<br>  db.inventory.find( { amount: 50}} )    </p>
-</blockquote>
-<p>要是想查询数组指定位置的元素，则需使用key.index语法指定下标，例如下面查询出tags键值数组中第2个元素为”school”的文档：  </p>
-<blockquote>
-<p>  db.inventory.find({“tags.1”:”school”})<br>数组下标都是从0开始的，所以查询结果返回数组中第2个元素为”school”的文档  </p>
-</blockquote>
-<p>####”$size”<br>用其查询指定长度的数组<br>语法：{field: {$size: value} }<br>查询集合中tags键值包含有3个元素的数组的所有文档：</p>
-<blockquote>
-<p>db.inventory.find({tags:{$size:3}})</p>
-</blockquote>
-<p>size必须制定一个定值，不能接受一个范围值，不能与其他查询子句组合(比如”gt”)<br>但有时查询需求就是需要一个长度范围，这种情况创建一个计数器字段，当你增加元素的同时增加计数器字段值。</p>
-<blockquote>
-<p> //每一次向指定数组添加元素的时候,”count”键值增加1(充当计数功能)<br>  db.collection.update({ $push : {field: value}, $inc ：{count ： 1}})<br>  //比较count键值实现范围查询<br>  db.collection.find({count : {$gt:2}})  </p>
-</blockquote>
-<p>####”$in”<br>匹配键值等于指定数组中任意值的文档。类似sql中in.<br>语法: { field: { $in: [<value1>, <value2>, … <valuen> ] } }</valuen></value2></value1></p>
-<p>####”$nin”<br>匹配键不存在或者键值不等于指定数组的任意值的文档。类似sql中not in(SQL中字段不存在使用会有语法错误).<br>语法: { field: { $nin: [ <value1>, <value2> … <valuen> ]} }　　</valuen></value2></value1></p>
-<p>查询出amount键值为16或者50的文档：  </p>
-<blockquote>
-<p>  db.inventory.find( { amount: { $in: [ 16, 50 ] } } )  </p>
-<p>  //查询出amount键值不为16或者50的文档<br>  db.inventory.find( { amount: { $nin: [ 16, 50 ] } } )<br>  //查询出qty键值不为16或50的文档，由于文档中都不存在键qty,所以返回所有文档<br>  db.inventory.find( { qty: { $nin: [ 16, 50 ] } } )  </p>
-</blockquote>
-<p>文档中键值类型不是数组，也可以使用$all操作符进行查询操作，如下例所示”$in”对应的数组只有一个值，那么和直接匹配这个值效果是一样的。  </p>
-<blockquote>
-<p>  //查询结果是相同的，匹配amount键值等于50的文档<br>  db.inventory.find( { amount: {$in:[50]}} )<br>  db.inventory.find( { amount: 50}} )  </p>
-</blockquote>
-<p>####”$and”<br>指定一个至少包含两个表达式的数组，选择出满足该数组中所有表达式的文档。$and操作符使用短路操作，若第一个表达式的值为“false”,余下的表达式将不会执行。<br>语法: { $and: [ { <expression1> }, { <expression2> } , … , { <expressionn> } ] }<br>查询name键值为“t1”,amount键值小于50的文档：  </expressionn></expression2></expression1></p>
-<blockquote>
-<p>  db.inventory.find({ $and: [ { name: “t1” }, { amount: { $lt：50 } } ] } )</p>
-</blockquote>
-<p>对于下面使用逗号分隔符的表达式列表，MongoDB会提供一个隐式的$and操作：  </p>
-<blockquote>
-<p>  //等同于{ $and: [ { name: “t1” }, { amount: { $lt：50 } } ] }<br>  db.inventory.find({ name: “t1” , amount: { $lt：50 }} )  </p>
-</blockquote>
-<p>####”$nor”<br>执行逻辑NOR运算,指定一个至少包含两个表达式的数组，选择出都不满足该数组中所有表达式的文档。<br>语法: { $nor: [ { <expression1> }, { <expression2> }, … { <expressionn> } ] }<br>查询name键值不为“t1”,amount键值不小于50的文档：  </expressionn></expression2></expression1></p>
-<blockquote>
-<p>  db.inventory.find( { $nor: [ { name: “t1” }, { qty: { $lt: 50 } } ] } )  </p>
-</blockquote>
-<p>若是文档中不存在表达式中指定的键，表达式值为false; false nor false 等于 true,所以查询结果返回集合中所有文档：  </p>
-<blockquote>
-<p>  db.inventory.find( { $nor: [ { sale: true }, { qty: { $lt: 50 } } ] } )  </p>
-</blockquote>
-<p>####”$not”<br>执行逻辑NOT运算，选择出不能匹配表达式的文档 ，包括没有指定键的文档。$not操作符不能独立使用，必须跟其他操作一起使用（除$regex）<br>语法: { field: { $not: { <operator-expression> } } }<br>查询amount键值不大于50（即小于等于50）的文档数据  </operator-expression></p>
-<blockquote>
-<p>  db.inventory.find( { amount: { $not: { $gt: 50 } } } ) //等同于db.inventory.find( { amount:  { $lte: 50 } } )  </p>
-</blockquote>
-<p>查询条件中的键gty，文档中都不存在无法匹配表示，所以返回集合所有文档数据。  </p>
-<blockquote>
-<p>  db.inventory.find( { gty: { $not: { $gt: 50 } } } ）  </p>
-</blockquote>
-<p>####”$or”<br>执行逻辑OR运算,指定一个至少包含两个表达式的数组，选择出至少满足数组中一条表达式的文档。<br>语法: { $or: [ { <expression1> }, { <expression2> }, … , { <expressionn> } ] }<br>查询集合中amount的键值大于50或者name的键值为“t1”的文档：  </expressionn></expression2></expression1></p>
-<blockquote>
-<p>  db.inventory.find( { $or: [ { amount: { $gt: 50 } }, { name: “t1” } ] } )  </p>
-</blockquote>
-<p>####”$exists”<br>如果$exists的值为true,选择存在该字段的文档；若值为false则选择不包含该字段的文档(我们上面在查询键值为null的文档时使用”$exists”判定集合中文档是否包含该键)。<br>语法: { field: { $exists: <boolean> } }  </boolean></p>
-<blockquote>
-<p>  //查询不存在qty字段的文档（所有文档）<br>  db.inventory.find( { qty: { $exists: false } })<br>  //查询amount字段存在，且值不等于16和58的文档<br>  db.inventory.find( { amount: { $exists: true, $nin: [ 16, 58 ] } } )   </p>
-</blockquote>
-<p>如果该字段的值为null，$exists的值为true会返回该条文档，false则不返回。  </p>
-<blockquote>
-<p>  //向集合中插入一条amount键值为null的文档<br>  {“name”:”t4”,”amount”:null,”tags”:[ “bag”, “school”, “book” ]}<br>  //0条数据<br>  db.inventory.find( { amount: { $exists: false } } )<br>  //所有的数据<br>  db.inventory.find( { amount: { $exists: true } } )    </p>
-</blockquote>
-<p>####”$mod”<br>匹配字段值对（divisor）取模，值等于（remainder）的文档。<br>语法: { field: { $mod: [ divisor, remainder ]} }<br>查询集合中 amount 键值为 4 的 0 次模数的所有文档，例如 amount 值等于 16 的文档  </p>
-<blockquote>
-<p>  db.inventory.find( { amount: { $mod: [ 4, 0 ] } } )  </p>
-</blockquote>
-<p>有些情况下(特殊情况键值为null时)，我们可以使用mod操作符替代使用求模表达式的mod操作符替代使用求模表达式的where操作符，因为后者代价昂贵。   </p>
-<blockquote>
-<p>  db.inventory.find( { $where: “this.amount % 4 == 0” } )<br> 注意：返回结果怎么不一样。因为有一条文档的amount键值为null,javascript中null进行数值转换，会返回”0”。所以该条文档匹配where操作符求模式了表达式。当文档中字段值不存在null，就可以使用where操作符求模式了表达式。当文档中字段值不存在null，就可以使用mod替代$where的表达式.  </p>
-</blockquote>
-<p>####”$regex”<br>操作符查询中可以对字符串的执行正则匹配。 MongoDB使用Perl兼容的正则表达式（PCRE)库来匹配正则表达式<br>我们可以使用正则表达式对象或者$regex操作符来执行正则匹配：  </p>
-<blockquote>
-<p>   //查询name键值以“4”结尾的文档<br>  db.inventory.find( { name: /.4/i } );<br>  db.inventory.find( { name: { $regex: ‘.4’, $options: ‘i’ } } );  </p>
-</blockquote>
-<p>###options（使用options（使用regex ）</p>
-<ul>
-<li>i  　如果设置了这个修饰符，模式中的字母会进行大小写不敏感匹配。</li>
-<li>m   默认情况下，PCRE 认为目标字符串是由单行字符组成的(然而实际上它可能会包含多行).如果目标字符串 中没有 “\n”字符，或者模式中没有出现“行首”/“行末”字符，设置这个修饰符不产生任何影响。</li>
-<li>s    如果设置了这个修饰符，模式中的点号元字符匹配所有字符，包含换行符。如果没有这个修饰符，点号不匹配换行符。</li>
-<li>x    如果设置了这个修饰符，模式中的没有经过转义的或不在字符类中的空白数据字符总会被忽略，并且位于一个未转义的字符类外部的#字符和下一个换行符之间的字符也被忽略。 这个修饰符使被编译模式中可以包含注释。<br>   注意：这仅用于数据字符。 空白字符 还是不能在模式的特殊字符序列中出现，比如序列 。<br>　　注：JavaScript只提供了i和m选项，x和s选项必须使用$regex操作符。  </li>
-</ul>
-<p>####”$where”<br>操作符功能强大而且灵活，他可以使用任意的JavaScript作为查询的一部分,包含JavaScript表达式的字符串或者JavaScript函数<br>新建fruit集合并插入如下文档：  </p>
-<blockquote>
-<p>  //插入两条数据<br>  db.fruit.insert({“apple”:1, “banana”: 4, “peach” : 4})<br>  db.fruit.insert({“apple”:3, “banana”: 3, “peach” : 4})   </p>
-</blockquote>
-<p>比较文档中的两个键的值是否相等.例如查找出banana等于peach键值的文档（4种方法）：  </p>
-<blockquote>
-<p>  //JavaScrip字符串形式<br>  db.fruit.find( { $where: “this.banana == this.peach” } )<br>  db.fruit.find( { $where: “obj.banana == obj.peach” } )  </p>
-<p>  //JavaScript函数形式<br>  db.fruit.find( { $where: function() { return (this.banana == this.peach) } } )<br>  db.fruit.find( { $where: function() { return obj.banana == obj.peach; } } )  </p>
-</blockquote>
-<p>####”$slice (projection)”<br>$slice操作符控制查询返回的数组中元素的个数<br>语法：db.collection.find( { field: value }, { array: {$slice: count } } );<br>此操作符根据参数”{ field: value }” 指定键名和键值选择出文档集合，并且该文档集合中指定”array”键将返回从指定数量的元素。如果count的值大于数组中元素的数量，该查询返回数组中的所有元素的<br>$slice接受多种格式的参数 包含负数和数组:  </p>
-<blockquote>
-<p>  //选择comments的数组键值中前五个元素。<br>  db.posts.find( {}, { comments: { $slice: 5 } } );</p>
-<p>  //选择comments的数组键值中后五个元素。<br>  db.posts.find( {}, { comments: { $slice: -5 } } );</p>
-</blockquote>
-<p>####”$elemMatch(projection)”<br>elemMatch投影操作符将限制查询返回的数组字段的内容只包含匹配elemMatch条件的数组元素。  </p>
-<p>注意：</p>
-<ul>
-<li>数组中元素是内嵌文档。</li>
-<li>如果多个元素匹配$elemMatch条件，操作符返回数组中第一个匹配条件的元素。  </li>
-</ul>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/08/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T12:59:14+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -777,6 +353,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -796,8 +376,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -833,6 +422,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -936,6 +536,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
